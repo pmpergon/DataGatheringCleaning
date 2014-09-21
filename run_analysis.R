@@ -4,18 +4,18 @@ library(dplyr)
 
 #load txt data training and test sets:
 #       load training data set first
-features_training<-read.table("./UCI HAR Dataset/X_train.txt")
+features_training<-read.table("./X_train.txt")
 
 #       add set's headings
 # load features.txt (FEATURES COLUMN HEADINGS)
-features_headings<-read.table("./UCI HAR Dataset/features.txt")
+features_headings<-read.table("./features.txt")
 headings<- as.character(features_headings [,2])
 colnames(features_training) <- headings
 
 # load columns A (subject_train.txt) & B (y_train.txt) 
 #(BASED ON THE STRUCTURE OF THE TEST SET)
-subject_train<-read.table("./UCI HAR Dataset/subject_train.txt")
-y_train<-read.table("./UCI HAR Dataset/y_train.txt")
+subject_train<-read.table("./subject_train.txt")
+y_train<-read.table("./y_train.txt")
 
 # merge columns A (subject_train.txt) & B (y_train.txt) 
 AB<- cbind(subject_train,y_train)
@@ -29,7 +29,7 @@ ABfeatures_training<- cbind(AB,features_training)
 #(this set contains headings and subject coed and activity labels columns)
 # only the headings for the first to columns need to be changed
 
-features_test<-read.delim("./UCI HAR Dataset/X_test.txt")
+features_test<-read.delim("./X_test.txt")
 colnames (features_test) [1:2] <- AB_colnames
 colnames (features_test) [3:563] <- headings
 
@@ -49,7 +49,7 @@ subject_activity<- aggregate(data_select [,3:88], by=list(data_select$subject_co
 colnames(subject_activity) [1:2] <- c("subject_code","Activity_Labels")
 
 # Change Actiity_labels from #code to labels
-#               activity_text<-read.table("./UCI HAR Dataset/activity_labels.txt")
+#               activity_text<-read.table("./activity_labels.txt")
 levels_text <- c("WALKING","WALKING_UPSTAIRS", "WALKING_DOWNSTAIRS", "SITTING", "STANDING", "LAYING")
 #               levels_numbers <- c(1:6)
 
@@ -57,4 +57,4 @@ subject_activity$Activity_Labels <- cut(subject_activity$Activity_Labels, breaks
 
 # upload data set ("subject_activity") as a txt file created with write.table() using row.name=FALSE
 
-write.table(subject_activity,file="./UCI HAR Dataset/subject_activity_means.txt", row.names= FALSE)
+write.table(subject_activity,file="./subject_activity_means.txt", row.names= FALSE)
