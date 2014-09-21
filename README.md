@@ -1,4 +1,0 @@
-DataGatheringCleaning
-=====================
-
-Project assignment submission
