@@ -1,0 +1,30 @@
+Codebook:			
+			
+variable names used 			NOTES
+features_test			 "X_test.txt": UCI HAR Test data set.
+features_training		"X_train.txt": UCI HAR Training data set. Does not include activity and subject columns
+features_headings		"features.txt": UCI HAR list of features headings
+subject_train		"subject_train.txt': UCI HAR subject numbers: Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30
+y_train			"y_train.txt": Training labels for the training data set 
+			
+DF			general term used to denote a dataframe variable name
+			
+headings			temp variable for the conversion of features_headings to character list
+			
+AB			temp varibale for the activity and subject training data
+AB_colnames			temp variable holding the labels for the first tow columns in AB
+ABfeatures_training			completed training data set based on test data set structure 
+			
+data_merged			training and test dat merged into a single set
+			
+data_select_mean			column trimmed data for fields with "mean" in  their name
+data_select_std			column trimmed data for fields with "std" in  their name
+data_selectAB			trimmed data for the subject and activity columns
+data_select			merged data set with sellected columns (tidy)
+			
+subject_activity			splited & mean calculated set. Organized by Activity labels and subsequently subject_codes
+activity_text			Activity labels
+levels_text			level names for activity code conversion
+			
+subject_activity_means.txt			final text file name
+
